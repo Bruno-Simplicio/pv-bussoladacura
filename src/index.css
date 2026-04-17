@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", serif;
+  --font-bebas: "Bebas Neue", sans-serif;
+
+  --color-amber: #E8960A;
+  --color-amber-light: #F5B73A;
+  --color-amber-dim: #9C6405;
+  --color-dark: #0C0906;
+  --color-dark-2: #161109;
+  --color-dark-3: #1F1710;
+  --color-dark-card: #231A0E;
+  --color-off-white: #F5EFE0;
+  --color-muted: #9E8E72;
+  --color-danger: #C94040;
+  --color-green: #3A7D44;
+}
+
+@layer base {
+  body {
+    @apply bg-dark text-off-white font-sans font-normal leading-relaxed overflow-x-hidden;
+  }
+}
+
+@keyframes shimmer {
+  from { background-position: 0 0; }
+  to { background-position: 40px 0; }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
