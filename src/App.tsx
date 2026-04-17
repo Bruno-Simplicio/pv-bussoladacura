@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { motion, useInView, AnimatePresence } from "motion/react";
+import { m, useInView, AnimatePresence, LazyMotion, domAnimation } from "motion/react";
 import { useRef, ReactNode, useState, useEffect } from "react";
 import { 
   Calendar, 
@@ -36,7 +36,7 @@ function Reveal({ children, className = "", delay = 0 }: RevealProps) {
   const isInView = useInView(ref, { once: true, amount: 0.2 });
 
   return (
-    <motion.div
+    <m.div
       ref={ref}
       initial={{ opacity: 0, y: 24 }}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
@@ -44,7 +44,7 @@ function Reveal({ children, className = "", delay = 0 }: RevealProps) {
       className={className}
     >
       {children}
-    </motion.div>
+    </m.div>
   );
 }
 
@@ -145,7 +145,7 @@ function BussolaAnimation() {
             <Search className="w-4 h-4 text-amber" />
             <div className="text-sm text-off-white font-medium flex-1">
               {searchText}
-              <motion.span 
+              <m.span 
                 animate={{ opacity: [0, 1, 0] }}
                 transition={{ duration: 0.8, repeat: Infinity }}
                 className="inline-block w-0.5 h-4 bg-amber ml-0.5 align-middle"
@@ -157,7 +157,7 @@ function BussolaAnimation() {
           <div className="min-h-[160px] flex flex-col justify-start">
             <AnimatePresence>
               {phase >= 1 && (
-                <motion.div 
+                <m.div 
                   initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 8 }}
@@ -170,14 +170,14 @@ function BussolaAnimation() {
                   <div className="text-[13px] md:text-[14px] text-off-white/80 leading-relaxed font-light">
                     {resultText}
                     {phase === 2 && resultText.length < fullResultText.length && (
-                      <motion.span 
+                      <m.span 
                         animate={{ opacity: [0, 1, 0] }}
                         transition={{ duration: 0.8, repeat: Infinity }}
                         className="inline-block w-1.5 h-0.5 bg-teal ml-1 align-middle"
                       />
                     )}
                   </div>
-                </motion.div>
+                </m.div>
               )}
             </AnimatePresence>
           </div>
@@ -230,21 +230,22 @@ export default function App() {
   }, []);
 
   return (
-    <div className="min-h-screen">
-      {/* NOTIFICATION POPUP - MOVED TO BOTTOM NEAR STICKY BAR */}
-      <AnimatePresence>
-        {notification && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 20 }}
-            className="fixed bottom-[105px] left-1/2 -translate-x-1/2 z-[100] bg-dark-card/80 backdrop-blur-md border border-white/10 py-2 px-4 rounded-full shadow-xl flex items-center gap-2"
-          >
-            <div className="w-2 h-2 bg-amber rounded-full animate-pulse" />
-            <span className="text-[11px] text-muted font-medium uppercase tracking-wider">{notification}</span>
-          </motion.div>
-        )}
-      </AnimatePresence>
+    <LazyMotion features={domAnimation}>
+      <div className="min-h-screen">
+        {/* NOTIFICATION POPUP - MOVED TO BOTTOM NEAR STICKY BAR */}
+        <AnimatePresence>
+          {notification && (
+            <m.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 20 }}
+              className="fixed bottom-[105px] left-1/2 -translate-x-1/2 z-[100] bg-dark-card/80 backdrop-blur-md border border-white/10 py-2 px-4 rounded-full shadow-xl flex items-center gap-2"
+            >
+              <div className="w-2 h-2 bg-amber rounded-full animate-pulse" />
+              <span className="text-[11px] text-muted font-medium uppercase tracking-wider">{notification}</span>
+            </m.div>
+          )}
+        </AnimatePresence>
       {/* TOPBAR */}
       <div className="bg-amber text-dark text-center py-2.5 px-5 text-[13px] font-medium tracking-wider uppercase">
         ⚡ Próxima turma: 18 de abril — Vagas limitadas. Apenas R$37.
@@ -363,29 +364,29 @@ export default function App() {
              </div>
 
              {/* Positioned Words with floating animation */}
-             <motion.div 
+             <m.div 
                animate={{ y: [0, -6, 0] }}
                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
                className="absolute -top-2 left-1/2 -translate-x-1/2 bg-dark text-amber px-5 py-1.5 rounded-lg font-bebas text-xl tracking-wider shadow-xl z-10"
              >
                Trata
-             </motion.div>
+             </m.div>
              
-             <motion.div 
+             <m.div 
                animate={{ x: [0, 6, 0] }}
                transition={{ duration: 3, repeat: Infinity, delay: 1, ease: "easeInOut" }}
                className="absolute top-1/2 -right-8 -translate-y-1/2 bg-dark text-amber px-5 py-1.5 rounded-lg font-bebas text-xl tracking-wider shadow-xl z-10"
              >
                Melhora
-             </motion.div>
+             </m.div>
 
-             <motion.div 
+             <m.div 
                animate={{ x: [0, -6, 0] }}
                transition={{ duration: 3, repeat: Infinity, delay: 2, ease: "easeInOut" }}
                className="absolute top-1/2 -left-8 -translate-y-1/2 bg-dark text-amber px-5 py-1.5 rounded-lg font-bebas text-xl tracking-wider shadow-xl z-10"
              >
                Volta
-             </motion.div>
+             </m.div>
           </div>
 
           <div className="max-w-[600px] mx-auto">
@@ -749,14 +750,14 @@ export default function App() {
           </div>
 
           <div className="relative h-2 bg-dark/60 rounded-full overflow-hidden border border-white/5 mb-2">
-            <motion.div 
+            <m.div 
               initial={{ width: "0%" }}
               animate={{ width: `${progress}%` }}
               transition={{ duration: 2, ease: "easeOut" }}
               className="h-full bg-amber relative"
             >
               <div className="absolute inset-0 bg-[linear-gradient(45deg,rgba(255,255,255,0.1)_25%,transparent_25%,transparent_50%,rgba(255,255,255,0.1)_50%,rgba(255,255,255,0.1)_75%,transparent_75%,transparent)] bg-[length:20px_20px] animate-[shimmer_2s_linear_infinite]" />
-            </motion.div>
+            </m.div>
           </div>
 
           <div className="text-center">
@@ -767,5 +768,6 @@ export default function App() {
         </div>
       </div>
     </div>
+    </LazyMotion>
   );
 }
