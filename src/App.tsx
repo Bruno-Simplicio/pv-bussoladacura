@@ -248,7 +248,7 @@ export default function App() {
         </AnimatePresence>
       {/* TOPBAR */}
       <div className="bg-amber text-dark text-center py-2.5 px-5 text-[13px] font-medium tracking-wider uppercase">
-        ⚡ Próxima turma: 18 de abril — Vagas limitadas. Apenas R$37.
+        ⚡ Próxima turma: 25 de abril — Vagas limitadas. Apenas R$37.
       </div>
 
       {/* HERO */}
@@ -263,7 +263,7 @@ export default function App() {
         
         <div className="relative z-10">
           <div className="inline-block bg-amber/15 border border-amber/40 text-amber-light text-[11px] tracking-[0.12em] uppercase py-1.5 px-4.5 rounded-full mb-7 font-medium">
-            Workshop ao vivo • 18 de abril • 09h30
+            Workshop ao vivo • 25 de abril • 09h30
           </div>
 
           <h1 className="font-bebas text-[clamp(46px,10vw,88px)] leading-[0.95] tracking-tight text-off-white max-w-[900px] mx-auto mb-2.5">
@@ -288,7 +288,7 @@ export default function App() {
           <div className="mt-7 flex justify-center gap-8 flex-wrap">
             <span className="text-sm text-muted flex items-center gap-1.5">
               <Calendar className="w-[15px] h-[15px] text-amber" />
-              18 de abril, às 09h30
+              25 de abril, às 09h30
             </span>
             <span className="text-sm text-muted flex items-center gap-1.5">
               <Mail className="w-[15px] h-[15px] text-amber" />
@@ -595,7 +595,7 @@ export default function App() {
           
           <div className="my-8 border border-white/6 rounded-xl overflow-hidden">
             {[
-              { name: "Workshop ao vivo (3h)", sub: "18 de abril · com Bruno Simplício", val: "R$97" },
+              { name: "Workshop ao vivo (3h)", sub: "25 de abril · com Bruno Simplício", val: "R$97" },
               { name: "Ferramenta Bússola da Cura", sub: "Acesso vitalício", val: "R$47" },
               { name: "Protocolo de Desativação", sub: "Adultos e crianças", val: "R$67" }
             ].map((line, idx) => (
@@ -696,7 +696,7 @@ export default function App() {
         <Reveal className="max-w-[520px] mx-auto bg-dark-card border-2 border-amber rounded-2xl p-10 md:p-12">
           <div className="inline-block bg-danger text-white text-[12px] font-medium tracking-widest uppercase py-1.5 px-4 rounded-full mb-7">⚡ 80% das vagas preenchidas</div>
 
-          <div className="text-sm text-muted tracking-wider uppercase mb-2">Workshop Bússola da Cura • 18 de abril</div>
+          <div className="text-sm text-muted tracking-wider uppercase mb-2">Workshop Bússola da Cura • 25 de abril</div>
           <div className="font-bebas text-[88px] text-off-white leading-none tracking-tight">
             <sup className="font-sans text-[32px] font-light align-super leading-none text-muted">R$</sup>37
           </div>
